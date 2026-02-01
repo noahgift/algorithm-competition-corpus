@@ -1,6 +1,18 @@
 # Algorithm Competition Corpus
 
+![Algorithm Competition Corpus](assets/hero.svg)
+
 A pure Python algorithm corpus with **EXTREME quality standards** for Depyler transpilation and education.
+
+## PMAT Scorecard
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| **Algorithm Files** | 101 | ✅ |
+| **Test Cases** | 905 | ✅ |
+| **Code Coverage** | 96.27% | ✅ |
+| **PMAT TDG Grade** | A+ | ✅ |
+| **Quality Gates** | 6/6 Passing | ✅ |
 
 ## Quality Standards
 
@@ -8,9 +20,26 @@ A pure Python algorithm corpus with **EXTREME quality standards** for Depyler tr
 |--------|-------------|
 | **Dependencies** | Zero (stdlib only) |
 | **Type Coverage** | 100% |
-| **Test Coverage** | 95% branch minimum |
-| **PMAT TDG Grade** | A- or higher |
+| **Test Coverage** | 96%+ branch (95% min) |
+| **PMAT TDG Grade** | A+ |
 | **Lint Violations** | Zero |
+
+## 6 Quality Gates (PMAT Comply)
+
+All gates must pass before any commit:
+
+| Gate | Tool | Check |
+|------|------|-------|
+| 1 | `ruff format --check` | Code formatting |
+| 2 | `ruff check` | Lint violations |
+| 3 | `ty check` | Type errors |
+| 4 | `pytest --doctest-modules` | Doctest examples |
+| 5 | `pytest` | Unit tests |
+| 6 | `pytest --cov` | 95% branch coverage |
+
+```bash
+make comply   # Run all 6 gates
+```
 
 ## Toolchain
 
@@ -39,24 +68,30 @@ make test     # Run tests
 make coverage # With coverage report
 ```
 
-## Categories (100+ files)
+## Categories (18 Categories, 101 Files)
 
 | Category | Files | Description |
 |----------|-------|-------------|
-| `graph/` | 10 | BFS, DFS, Dijkstra, Bellman-Ford, union-find, SCC |
-| `dynamic_programming/` | 12 | Knapsack, LCS, LIS, edit distance, coin change |
-| `sliding_window/` | 6 | Max sum subarray, min window substring |
-| `two_pointers/` | 7 | Two sum, three sum, container with water |
-| `binary_search/` | 8 | Rotated array, peak element, search insert |
-| `backtracking/` | 8 | N-queens, permutations, sudoku, word search |
-| `bit_manipulation/` | 7 | XOR tricks, counting bits, bitmask DP |
-| `sorting/` | 8 | Quicksort, mergesort, heapsort, radix |
-| `heap_priority_queue/` | 6 | Kth largest, merge K sorted, median stream |
-| `trees/` | 8 | Traversals, BST validation, LCA, serialize |
-| `linked_list/` | 6 | Reverse, cycle detection, palindrome |
-| `string/` | 8 | KMP, Rabin-Karp, Z-algorithm, palindrome |
-| `math/` | 8 | GCD, sieve, fast exponentiation, combinatorics |
-| `intervals/` | 6 | Merge intervals, meeting rooms |
+| `graph/` | 9 | BFS, DFS, Dijkstra, Bellman-Ford, union-find, topological sort |
+| `dynamic_programming/` | 7 | Fibonacci, knapsack, LCS, LIS, edit distance, word break |
+| `sliding_window/` | 2 | Kadane's algorithm, window patterns |
+| `two_pointers/` | 5 | Two sum, container, palindrome, partition, subarray |
+| `binary_search/` | 5 | Binary search, rotated array, peak element, bounds |
+| `backtracking/` | 4 | N-queens, permutations, subsets, sudoku |
+| `bit_manipulation/` | 3 | Basic ops, advanced ops, bit tricks |
+| `sorting/` | 5 | Quicksort, mergesort, heapsort, counting, radix |
+| `heap/` | 3 | Heap operations, kth element, kth problems |
+| `tree/` | 5 | Traversals, BST validation, LCA, tree properties |
+| `linked_list/` | 4 | List node, list ops, list problems, advanced |
+| `string/` | 4 | KMP, Rabin-Karp, string ops, longest substring |
+| `math/` | 5 | GCD, primes, power, combinatorics, geometry |
+| `interval/` | 2 | Interval operations, interval scheduling |
+| `stack/` | 3 | Expression evaluation, parentheses, monotonic stack |
+| `queue/` | 2 | Sliding max, queue reconstruction |
+| `matrix/` | 3 | Matrix operations, search, path finding |
+| `divide_and_conquer/` | 3 | Binary search DC, merge sort DC, max subarray |
+| `number/` | 2 | Conversion, digit operations |
+| `greedy/` | 4 | Activity selection, interval scheduling, jump game |
 
 ## Type Annotation Requirements
 

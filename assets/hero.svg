@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1c40f;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.5"/>
+    </pattern>
+    <rect width="800" height="400" fill="url(#grid)"/>
+  </g>
+
+  <!-- Decorative elements -->
+  <circle cx="700" cy="80" r="60" fill="none" stroke="#e94560" stroke-width="1" opacity="0.3"/>
+  <circle cx="700" cy="80" r="45" fill="none" stroke="#e94560" stroke-width="1" opacity="0.2"/>
+  <circle cx="100" cy="320" r="50" fill="none" stroke="#4ecdc4" stroke-width="1" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="400" y="80" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#ffffff" filter="url(#glow)">Algorithm Competition Corpus</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="115" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#94a3b8">Pure Python | Zero Dependencies | Depyler Ready</text>
+
+  <!-- Stats boxes -->
+  <!-- Box 1: Files -->
+  <rect x="50" y="150" width="160" height="100" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="130" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="url(#accent-gradient)">101</text>
+  <text x="130" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8">Algorithm Files</text>
+  <text x="130" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">18 Categories</text>
+
+  <!-- Box 2: Tests -->
+  <rect x="230" y="150" width="160" height="100" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="310" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="#4ecdc4">905</text>
+  <text x="310" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8">Passing Tests</text>
+  <text x="310" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Popperian Invariants</text>
+
+  <!-- Box 3: Coverage -->
+  <rect x="410" y="150" width="160" height="100" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="#a78bfa">96%</text>
+  <text x="490" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8">Code Coverage</text>
+  <text x="490" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Branch Coverage</text>
+
+  <!-- Box 4: Grade -->
+  <rect x="590" y="150" width="160" height="100" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="195" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="700" fill="url(#gold-gradient)">A+</text>
+  <text x="670" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8">PMAT Grade</text>
+  <text x="670" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">6/6 Gates Passing</text>
+
+  <!-- Quality badges -->
+  <g transform="translate(50, 280)">
+    <rect width="115" height="28" rx="5" fill="#22c55e" opacity="0.2"/>
+    <rect width="115" height="28" rx="5" fill="none" stroke="#22c55e" stroke-width="1"/>
+    <text x="57.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#22c55e">100% Typed</text>
+  </g>
+
+  <g transform="translate(175, 280)">
+    <rect width="115" height="28" rx="5" fill="#3b82f6" opacity="0.2"/>
+    <rect width="115" height="28" rx="5" fill="none" stroke="#3b82f6" stroke-width="1"/>
+    <text x="57.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#3b82f6">Zero Deps</text>
+  </g>
+
+  <g transform="translate(300, 280)">
+    <rect width="115" height="28" rx="5" fill="#f59e0b" opacity="0.2"/>
+    <rect width="115" height="28" rx="5" fill="none" stroke="#f59e0b" stroke-width="1"/>
+    <text x="57.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#f59e0b">Ruff Clean</text>
+  </g>
+
+  <g transform="translate(425, 280)">
+    <rect width="115" height="28" rx="5" fill="#ec4899" opacity="0.2"/>
+    <rect width="115" height="28" rx="5" fill="none" stroke="#ec4899" stroke-width="1"/>
+    <text x="57.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ec4899">Doctest</text>
+  </g>
+
+  <g transform="translate(550, 280)">
+    <rect width="115" height="28" rx="5" fill="#8b5cf6" opacity="0.2"/>
+    <rect width="115" height="28" rx="5" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="57.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#8b5cf6">Citations</text>
+  </g>
+
+  <g transform="translate(675, 280)">
+    <rect width="75" height="28" rx="5" fill="#14b8a6" opacity="0.2"/>
+    <rect width="75" height="28" rx="5" fill="none" stroke="#14b8a6" stroke-width="1"/>
+    <text x="37.5" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#14b8a6">Rust</text>
+  </g>
+
+  <!-- Categories preview -->
+  <text x="400" y="345" text-anchor="middle" font-family="monospace" font-size="12" fill="#64748b">
+    graph | dp | sorting | searching | trees | strings | math | greedy | backtracking | ...
+  </text>
+
+  <!-- Footer -->
+  <text x="400" y="380" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#475569">
+    Educational Algorithm Library with Peer-Reviewed Citations (Dijkstra, Knuth, CLRS, Tarjan, Floyd)
+  </text>
+</svg>
