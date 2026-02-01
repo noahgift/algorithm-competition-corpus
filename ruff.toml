@@ -1,0 +1,212 @@
+# EXTREME lint configuration for algorithm-competition-corpus
+# Zero tolerance for code quality issues
+
+target-version = "py312"
+line-length = 88
+src = ["src", "tests"]
+
+# Exclude generated files and caches
+exclude = [
+    ".git",
+    ".ruff_cache",
+    ".pytest_cache",
+    "__pycache__",
+    "*.egg-info",
+    ".venv",
+    "venv",
+]
+
+# ============================================================================
+# Lint Rules - EXTREME Selection
+# ============================================================================
+[lint]
+select = [
+    # Core Python
+    "F",      # Pyflakes - undefined names, unused imports
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+
+    # Complexity (EXTREME: max 10)
+    "C90",    # mccabe complexity
+
+    # Import organization
+    "I",      # isort
+
+    # Naming conventions
+    "N",      # pep8-naming
+
+    # Documentation
+    "D",      # pydocstyle - Google style enforced
+
+    # Modernization
+    "UP",     # pyupgrade - use modern Python syntax
+    "FA",     # flake8-future-annotations
+
+    # Type annotations (EXTREME: 100% coverage)
+    "ANN",    # flake8-annotations
+    "TCH",    # flake8-type-checking
+
+    # Security
+    "S",      # flake8-bandit
+
+    # Bug prevention
+    "B",      # flake8-bugbear
+    "BLE",    # flake8-blind-except
+    "FBT",    # flake8-boolean-trap
+    "A",      # flake8-builtins
+    "T10",    # flake8-debugger
+    "T20",    # flake8-print
+    "RSE",    # flake8-raise
+    "RET",    # flake8-return
+    "SLF",    # flake8-self
+    "SIM",    # flake8-simplify
+    "ARG",    # flake8-unused-arguments
+
+    # Code style
+    "C4",     # flake8-comprehensions
+    "COM",    # flake8-commas
+    "EM",     # flake8-errmsg
+    "ISC",    # flake8-implicit-str-concat
+    "ICN",    # flake8-import-conventions
+    "PIE",    # flake8-pie
+    "Q",      # flake8-quotes
+
+    # Testing
+    "PT",     # flake8-pytest-style
+
+    # Path handling
+    "PTH",    # flake8-use-pathlib
+
+    # Technical debt (ZERO TOLERANCE)
+    "TD",     # flake8-todos
+    "FIX",    # flake8-fixme
+    "ERA",    # eradicate - commented out code
+
+    # Pylint subset
+    "PL",     # Pylint (PLR, PLC, PLE, PLW)
+
+    # Error handling
+    "TRY",    # tryceratops
+
+    # Performance
+    "PERF",   # Perflint
+
+    # Modernization
+    "FURB",   # refurb
+    "FLY",    # flynt (f-string conversion)
+
+    # Ruff-specific
+    "RUF",    # Ruff-specific rules
+
+    # Logging
+    "LOG",    # flake8-logging
+    "G",      # flake8-logging-format
+
+    # Miscellaneous
+    "YTT",    # flake8-2020
+    "ASYNC",  # flake8-async
+    "SLOT",   # flake8-slots
+    "TID",    # flake8-tidy-imports
+    "INT",    # flake8-gettext
+    "PGH",    # pygrep-hooks
+    "PYI",    # flake8-pyi
+    "INP",    # flake8-no-pep420
+    "DTZ",    # flake8-datetimez
+]
+
+ignore = [
+    # Documentation - module docstring handled differently
+    "D100",   # Missing docstring in public module
+    "D104",   # Missing docstring in public package
+
+    # Formatter conflicts
+    "COM812", # Missing trailing comma (conflicts with formatter)
+    "ISC001", # Single-line implicit string concatenation (conflicts with formatter)
+
+    # Pylint - some are too strict for algorithms
+    "PLR0913", # Too many arguments (algorithms often need many params)
+
+    # Technical debt - we use tickets, not comments
+    "TD002",  # Missing author in TODO
+    "TD003",  # Missing issue link in TODO
+]
+
+# Complexity limits - slightly relaxed for algorithm implementations
+[lint.mccabe]
+max-complexity = 15   # Algorithms can be inherently complex
+
+[lint.pylint]
+max-args = 7          # Algorithms sometimes need more args
+max-branches = 15     # Allow for complex algorithms
+max-returns = 4
+max-statements = 50   # Algorithms can be longer
+max-locals = 15
+
+[lint.pydocstyle]
+convention = "google"
+
+[lint.flake8-annotations]
+allow-star-arg-any = false
+mypy-init-return = true
+suppress-none-returning = true
+
+[lint.flake8-bandit]
+check-typed-exception = true
+
+[lint.flake8-bugbear]
+extend-immutable-calls = []
+
+[lint.flake8-type-checking]
+strict = true
+runtime-evaluated-base-classes = []
+
+[lint.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[lint.flake8-pytest-style]
+fixture-parentheses = false
+parametrize-names-type = "tuple"
+parametrize-values-type = "list"
+
+[lint.isort]
+force-single-line = false
+force-sort-within-sections = true
+known-first-party = ["algorithm_corpus"]
+combine-as-imports = true
+split-on-trailing-comma = true
+
+# Per-file ignores for tests and algorithm files
+[lint.per-file-ignores]
+"tests/*" = [
+    "S101",    # Assert allowed in tests
+    "ARG001",  # Unused function argument (fixtures)
+    "ARG002",  # Unused method argument (fixtures)
+    "PLR2004", # Magic value comparison
+    "D103",    # Missing docstring in public function
+    "D100",    # Missing docstring in public module
+    "ANN201",  # Missing return type for public function
+    "S311",    # Standard pseudo-random generators (ok for tests)
+    "PT009",   # Use unittest-style assertions (we use unittest.TestCase)
+]
+"__init__.py" = [
+    "D104",    # Missing docstring in public package
+    "F401",    # Unused import (re-exports)
+]
+"src/algorithm_corpus/*/*.py" = [
+    "PERF401", # list.append in loops (clearer for algorithms)
+    "RUF005",  # list concatenation (clearer for algorithms)
+    "C901",    # Complex functions (algorithms are inherently complex)
+    "PLR0912", # Too many branches (algorithms need them)
+    "PLR0915", # Too many statements (algorithms need them)
+]
+
+# ============================================================================
+# Formatter Configuration
+# ============================================================================
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = 72

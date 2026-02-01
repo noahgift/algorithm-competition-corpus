@@ -1,0 +1,114 @@
+[project]
+name = "algorithm-competition-corpus"
+version = "0.1.0"
+description = "Pure Python algorithm corpus for Depyler transpilation with EXTREME quality standards"
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Noah Gift" }]
+keywords = [
+    "algorithms",
+    "transpilation",
+    "depyler",
+    "education",
+    "leetcode",
+    "competitive-programming",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+    "Topic :: Education",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+# ZERO external dependencies - stdlib only
+dependencies = []
+
+[project.optional-dependencies]
+# Tools are managed via uv tool install, not as deps
+dev = []
+
+[project.urls]
+Repository = "https://github.com/noahgift/algorithm-competition-corpus"
+Documentation = "https://github.com/noahgift/algorithm-competition-corpus#readme"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/algorithm_corpus"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/docs",
+]
+
+# ============================================================================
+# pytest configuration
+# ============================================================================
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-ra",
+    "--doctest-modules",
+    "--doctest-continue-on-failure",
+]
+filterwarnings = ["error"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "property: marks property-based tests",
+]
+
+# ============================================================================
+# coverage configuration
+# ============================================================================
+[tool.coverage.run]
+source = ["src/algorithm_corpus"]
+branch = true
+parallel = true
+omit = [
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "@abstractmethod",
+]
+fail_under = 95
+show_missing = true
+skip_covered = false
+precision = 2
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+# ============================================================================
+# PMAT configuration (inline for single-file setup)
+# ============================================================================
+[tool.pmat]
+min_coverage = 95.0
+max_complexity = 10
+max_cognitive_complexity = 10
+min_tdg_grade = "A-"
+satd_tolerance = 0
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.14",
+    "ty>=0.0.14",
+]

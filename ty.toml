@@ -1,0 +1,8 @@
+# ty type checker configuration
+# Strict type checking
+
+[environment]
+python-version = "3.12"
+
+[src]
+root = "src"
